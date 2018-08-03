@@ -1,0 +1,22 @@
+{
+  "name": "dappform-forms-api",
+  "version": "1.0.0",
+  "repository": "https://github.com/FoundersAS/dappform-forms-api",
+  "author": "Joshua Karjala-Svendsen <joshua@fluxuries.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.5",
+    "@types/uuid": "^3.4.3",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "blockstack": "^18.0.3",
+    "uuid": "^3.3.2"
+  }
+}
