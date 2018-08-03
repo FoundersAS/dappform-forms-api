@@ -94,6 +94,10 @@ export async function addFormToList(form: Form) {
   putFile(formsListFile, [...forms, form])
 }
 
+export async function saveForm(form: Form) {
+  await putFile(getFormPath(form.uuid), form)
+}
+
 async function deleteFormSubmissions(formUuid: string) {
   return await putFile(getSubmissionsPath(formUuid), {})
 }

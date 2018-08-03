@@ -80,6 +80,10 @@ async function addFormToList(form) {
     write_1.putFile(formsListFile, [...forms, form]);
 }
 exports.addFormToList = addFormToList;
+async function saveForm(form) {
+    await write_1.putFile(getFormPath(form.uuid), form);
+}
+exports.saveForm = saveForm;
 async function deleteFormSubmissions(formUuid) {
     return await write_1.putFile(getSubmissionsPath(formUuid), {});
 }
