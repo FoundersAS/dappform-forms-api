@@ -12,6 +12,7 @@ function getFormPath(formUuid) {
 function getPublishPath(formUuid) {
     return `published/${formUuid}.json`;
 }
+exports.getPublishPath = getPublishPath;
 // function sortSubmissions(submissions: Submission[]): FormSubmissionMap {
 //   return submissions.reduce((acc: FormSubmissionMap, cur: Submission) => {
 //     acc[cur.formUuid] = acc[cur.formUuid] || {} as SubmissionMap

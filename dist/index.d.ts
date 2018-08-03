@@ -1,5 +1,6 @@
 import { Form, Submission, SubmissionMap } from './lib/form-format';
 export * from './lib/form-format';
+export declare function getPublishPath(formUuid: string): string;
 export declare function newFormSubmission(submission: Submission): Promise<void>;
 export declare function createDummySubmission(formUuid: string): Submission;
 export declare function createForm(form: Form): Promise<[void, void, void]>;
