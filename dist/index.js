@@ -77,7 +77,7 @@ function publishForm(form) {
 exports.publishForm = publishForm;
 async function addFormToList(form) {
     const forms = await getForms();
-    write_1.putFile(formsListFile, [...forms, form]);
+    await write_1.putFile(formsListFile, [...forms, form]);
 }
 exports.addFormToList = addFormToList;
 async function saveForm(form) {
@@ -89,7 +89,7 @@ async function deleteFormSubmissions(formUuid) {
 }
 async function removeFormFromList(formUuid) {
     const forms = await getForms();
-    write_1.putFile(formsListFile, forms.filter((f) => f.uuid !== formUuid));
+    await write_1.putFile(formsListFile, forms.filter((f) => f.uuid !== formUuid));
 }
 async function unpublishForm(formUuid) {
     return await write_1.putFile(getPublishPath(formUuid), {});
