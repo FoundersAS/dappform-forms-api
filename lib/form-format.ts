@@ -10,6 +10,7 @@ export interface Question {
 export interface FormBasic {
   uuid: string,
   name: string
+  appOrigin: string
   authorPubKey: string
 
   created: Date,
