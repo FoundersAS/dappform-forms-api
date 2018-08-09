@@ -6,7 +6,7 @@ export interface Question {
     created: Date;
     modified: Date;
 }
-interface FormBasic {
+export interface FormBasic {
     uuid: string;
     name: string;
     authorPubKey: string;
@@ -15,11 +15,12 @@ interface FormBasic {
     introText: string;
     confirmationText: string;
 }
-interface FormExpanded {
+export interface FormExpanded {
     questions: Question[];
 }
 export interface Form extends FormBasic, FormExpanded {
     weeklyReportRecipient?: string;
+    submissionsUrl: string;
 }
 export interface Submission {
     uuid: string;
@@ -38,4 +39,3 @@ export interface SubmissionMap {
 export interface FormSubmissionMap {
     [key: string]: SubmissionMap;
 }
-export {};
