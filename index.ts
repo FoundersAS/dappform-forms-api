@@ -91,7 +91,7 @@ export function publishForm(form: Form): Promise<void> {
 
 export async function addFormToList(form: Form) {
   const forms = await getForms()
-  putFile(formsListFile, [...forms, form])
+  await putFile(formsListFile, [...forms, form])
 }
 
 export async function saveForm(form: Form) {
@@ -104,7 +104,7 @@ async function deleteFormSubmissions(formUuid: string) {
 
 async function removeFormFromList(formUuid: string) {
   const forms = await getForms()
-  putFile(formsListFile, forms.filter((f) => f.uuid !== formUuid))
+  await putFile(formsListFile, forms.filter((f) => f.uuid !== formUuid))
 }
 
 export async function unpublishForm(formUuid: string) {
