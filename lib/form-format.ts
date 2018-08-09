@@ -25,6 +25,7 @@ export interface FormExpanded {
 
 export interface Form extends FormBasic, FormExpanded {
   weeklyReportRecipient?: string,
+  submissionsUrl: string
 }
 
 export interface Submission {
