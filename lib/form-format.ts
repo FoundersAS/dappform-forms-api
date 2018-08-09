@@ -7,7 +7,7 @@ export interface Question {
   modified: Date,
 }
 
-interface FormBasic {
+export interface FormBasic {
   uuid: string,
   name: string
   authorPubKey: string
@@ -19,7 +19,7 @@ interface FormBasic {
   confirmationText: string,
 }
 
-interface FormExpanded {
+export interface FormExpanded {
   questions: Question[],
 }
 
