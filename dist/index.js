@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const uuid_1 = require("uuid");
 const write_1 = require("./lib/write");
+const blockstack = require('blockstack');
 const formsListFile = 'forms.json';
 function getSubmissionsPath(formUuid) {
     return `submissions/${formUuid}.json`;
@@ -13,6 +14,11 @@ function getPublishPath(formUuid) {
     return `published/${formUuid}.json`;
 }
 exports.getPublishPath = getPublishPath;
+async function getPublicFormURL(formUuid, authorName, appOrigin) {
+    const path = await blockstack.getUserAppFileUrl(getPublishPath(formUuid), authorName, appOrigin);
+    return path;
+}
+exports.getPublicFormURL = getPublicFormURL;
 // function sortSubmissions(submissions: Submission[]): FormSubmissionMap {
 //   return submissions.reduce((acc: FormSubmissionMap, cur: Submission) => {
 //     acc[cur.formUuid] = acc[cur.formUuid] || {} as SubmissionMap
