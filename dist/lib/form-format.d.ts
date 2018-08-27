@@ -19,7 +19,6 @@ export interface FormExpanded {
     questions: Question[];
 }
 export interface Form extends FormBasic, FormExpanded {
-    weeklyReportRecipient?: string;
     submissionsUrl: string;
     primaryColor: string;
 }
