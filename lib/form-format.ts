@@ -26,6 +26,7 @@ export interface FormExpanded {
 export interface Form extends FormBasic, FormExpanded {
   submissionsUrl: string
   primaryColor: string
+  introImageURL: string
 }
 
 export interface Submission {
