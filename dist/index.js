@@ -48,7 +48,6 @@ async function newFormSubmission(submission) {
     const newSubmission = {};
     newSubmission[submission.uuid] = submission;
     const oldSubmissions = await write_1.getFile(submissionsPath) || {};
-    console.debug('Uploading new submissions: ', Object.assign({}, oldSubmissions, newSubmission));
     await write_1.putFile(submissionsPath, Object.assign({}, oldSubmissions, newSubmission));
 }
 exports.newFormSubmission = newFormSubmission;

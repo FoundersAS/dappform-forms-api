@@ -62,7 +62,6 @@ export async function newFormSubmission(submission: Submission) {
 
   const oldSubmissions = await getFile(submissionsPath) as SubmissionMap || {} as SubmissionMap
 
-  console.debug('Uploading new submissions: ', { ...oldSubmissions, ...newSubmission })
   await putFile(submissionsPath, { ... oldSubmissions, ... newSubmission })
 }
 
