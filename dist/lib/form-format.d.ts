@@ -1,6 +1,7 @@
+export declare type questionDataType = "text" | "email" | "number" | "datetime-local" | "tel" | "url" | "file";
 export interface Question {
     label: string;
-    type: string;
+    type: questionDataType;
     name: string;
     uuid: string;
     created: Date;
