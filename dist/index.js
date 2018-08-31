@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const uuid_1 = require("uuid");
 const write_1 = require("./lib/write");
+exports.getFile = write_1.getFile;
+exports.putFile = write_1.putFile;
 const blockstack = require('blockstack');
 const formsListFile = 'forms.json';
 function getSubmissionsPath(formUuid) {

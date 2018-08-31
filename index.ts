@@ -138,3 +138,5 @@ async function getFormsFile() {
 async function initForms() {
   return await putFile(formsListFile, [])
 }
+
+export {putFile, getFile}

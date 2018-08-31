@@ -1,4 +1,5 @@
 import { Form, Submission, SubmissionMap } from './lib/form-format';
+import { getFile, putFile } from './lib/write';
 export * from './lib/form-format';
 export declare function getPublishPath(formUuid: string): string;
 export declare function getPublicFormURL(formUuid: string, authorName: string, appOrigin: string): Promise<any>;
@@ -13,3 +14,4 @@ export declare function saveForm(form: Form): Promise<void>;
 export declare function unpublishForm(formUuid: string): Promise<void>;
 export declare function deleteForm(formUuid: string): Promise<void>;
 export declare function getForms(): Promise<Array<Partial<Form>>>;
+export { putFile, getFile };
