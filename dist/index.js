@@ -4,7 +4,7 @@ const uuid_1 = require("uuid");
 const blockstack_1 = require("./lib/blockstack");
 exports.getFile = blockstack_1.getFile;
 exports.putFile = blockstack_1.putFile;
-const blockstack = require('blockstack');
+exports.getPublicFormURL = blockstack_1.getPublicFormURL;
 const formsListFile = 'forms.json';
 function getSubmissionsPath(formUuid) {
     return `submissions/${formUuid}.json`;
@@ -16,11 +16,6 @@ function getPublishPath(formUuid) {
     return `published/${formUuid}.json`;
 }
 exports.getPublishPath = getPublishPath;
-async function getPublicFormURL(formUuid, authorName, appOrigin) {
-    const path = await blockstack.getUserAppFileUrl(getPublishPath(formUuid), authorName, appOrigin);
-    return path;
-}
-exports.getPublicFormURL = getPublicFormURL;
 // function sortSubmissions(submissions: Submission[]): FormSubmissionMap {
 //   return submissions.reduce((acc: FormSubmissionMap, cur: Submission) => {
 //     acc[cur.formUuid] = acc[cur.formUuid] || {} as SubmissionMap

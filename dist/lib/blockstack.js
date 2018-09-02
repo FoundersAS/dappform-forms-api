@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const index_1 = require("../index");
 const blockstack = require('blockstack');
 async function putFile(path, contents, encrypt = true) {
     try {
@@ -36,4 +37,9 @@ async function getFile(path) {
     return parsed;
 }
 exports.getFile = getFile;
+async function getPublicFormURL(formUuid, authorName, appOrigin) {
+    const path = await blockstack.getUserAppFileUrl(index_1.getPublishPath(formUuid), authorName, appOrigin);
+    return path;
+}
+exports.getPublicFormURL = getPublicFormURL;
 //# sourceMappingURL=blockstack.js.map

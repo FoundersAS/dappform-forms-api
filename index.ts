@@ -1,8 +1,6 @@
 import { v4 as uuid } from 'uuid'
 import { Answer, Form, Submission, SubmissionMap } from './lib/form-format'
-import { getFile, putFile } from './lib/blockstack'
-
-const blockstack = require('blockstack')
+import { getFile, putFile, getPublicFormURL } from './lib/blockstack'
 
 // export types for use elsewhere
 export * from './lib/form-format'
@@ -21,10 +19,6 @@ export function getPublishPath(formUuid: string) {
   return `published/${formUuid}.json`
 }
 
-export async function getPublicFormURL(formUuid:string, authorName:string, appOrigin:string) {
-  const path = await blockstack.getUserAppFileUrl(getPublishPath(formUuid), authorName, appOrigin)
-  return path
-}
 
 // function sortSubmissions(submissions: Submission[]): FormSubmissionMap {
 //   return submissions.reduce((acc: FormSubmissionMap, cur: Submission) => {
@@ -140,4 +134,4 @@ async function initForms() {
   return await putFile(formsListFile, [])
 }
 
-export {putFile, getFile}
+export {putFile, getFile, getPublicFormURL}

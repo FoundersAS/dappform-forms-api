@@ -1,3 +1,5 @@
+import { getPublishPath } from '../index'
+
 const blockstack = require('blockstack')
 
 export async function putFile(path: string, contents: Object, encrypt = true): Promise<void> {
@@ -30,4 +32,9 @@ export async function getFile(path: string): Promise<Object | Boolean> {
     return false
   }
   return parsed
+}
+
+export async function getPublicFormURL(formUuid:string, authorName:string, appOrigin:string) {
+  const path = await blockstack.getUserAppFileUrl(getPublishPath(formUuid), authorName, appOrigin)
+  return path
 }
