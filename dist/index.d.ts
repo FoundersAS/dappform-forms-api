@@ -1,5 +1,5 @@
 import { Form, Submission, SubmissionMap } from './lib/form-format';
-import { getFile, putFile } from './lib/write';
+import { getFile, putFile } from './lib/blockstack';
 export * from './lib/form-format';
 export declare function getPublishPath(formUuid: string): string;
 export declare function getPublicFormURL(formUuid: string, authorName: string, appOrigin: string): Promise<any>;

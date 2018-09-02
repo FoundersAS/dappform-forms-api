@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid'
 import { Answer, Form, Submission, SubmissionMap } from './lib/form-format'
-import { getFile, putFile } from './lib/write'
+import { getFile, putFile } from './lib/blockstack'
+
 const blockstack = require('blockstack')
 
 // export types for use elsewhere

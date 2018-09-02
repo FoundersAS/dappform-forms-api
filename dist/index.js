@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const uuid_1 = require("uuid");
-const write_1 = require("./lib/write");
-exports.getFile = write_1.getFile;
-exports.putFile = write_1.putFile;
+const blockstack_1 = require("./lib/blockstack");
+exports.getFile = blockstack_1.getFile;
+exports.putFile = blockstack_1.putFile;
 const blockstack = require('blockstack');
 const formsListFile = 'forms.json';
 function getSubmissionsPath(formUuid) {
@@ -49,8 +49,8 @@ async function newFormSubmission(submission) {
     const submissionsPath = getSubmissionsPath(submission.formUuid);
     const newSubmission = {};
     newSubmission[submission.uuid] = submission;
-    const oldSubmissions = await write_1.getFile(submissionsPath) || {};
-    await write_1.putFile(submissionsPath, Object.assign({}, oldSubmissions, newSubmission));
+    const oldSubmissions = await blockstack_1.getFile(submissionsPath) || {};
+    await blockstack_1.putFile(submissionsPath, Object.assign({}, oldSubmissions, newSubmission));
 }
 exports.newFormSubmission = newFormSubmission;
 function createDummySubmission(formUuid) {
@@ -64,49 +64,49 @@ function createDummySubmission(formUuid) {
 exports.createDummySubmission = createDummySubmission;
 function createForm(form) {
     return Promise.all([
-        write_1.putFile(getFormPath(form.uuid), form),
+        blockstack_1.putFile(getFormPath(form.uuid), form),
         publishForm(form),
         addFormToList(form),
     ]);
 }
 exports.createForm = createForm;
 async function getFormSubmissions(formUuid) {
-    return await write_1.getFile(getSubmissionsPath(formUuid)) || {};
+    return await blockstack_1.getFile(getSubmissionsPath(formUuid)) || {};
 }
 exports.getFormSubmissions = getFormSubmissions;
 async function getForm(formUuid) {
-    return await write_1.getFile(getFormPath(formUuid)) || undefined;
+    return await blockstack_1.getFile(getFormPath(formUuid)) || undefined;
 }
 exports.getForm = getForm;
 function publishForm(form) {
-    return write_1.putFile(getPublishPath(form.uuid), form, false);
+    return blockstack_1.putFile(getPublishPath(form.uuid), form, false);
 }
 exports.publishForm = publishForm;
 async function addFormToList(form) {
     const forms = await getForms();
-    await write_1.putFile(formsListFile, [...forms, form]);
+    await blockstack_1.putFile(formsListFile, [...forms, form]);
 }
 exports.addFormToList = addFormToList;
 async function saveForm(form) {
-    await write_1.putFile(getFormPath(form.uuid), form);
+    await blockstack_1.putFile(getFormPath(form.uuid), form);
 }
 exports.saveForm = saveForm;
 async function deleteFormSubmissions(formUuid) {
-    return await write_1.putFile(getSubmissionsPath(formUuid), {});
+    return await blockstack_1.putFile(getSubmissionsPath(formUuid), {});
 }
 async function removeFormFromList(formUuid) {
     const forms = await getForms();
-    await write_1.putFile(formsListFile, forms.filter((f) => f.uuid !== formUuid));
+    await blockstack_1.putFile(formsListFile, forms.filter((f) => f.uuid !== formUuid));
 }
 async function unpublishForm(formUuid) {
-    return await write_1.putFile(getPublishPath(formUuid), {});
+    return await blockstack_1.putFile(getPublishPath(formUuid), {});
 }
 exports.unpublishForm = unpublishForm;
 async function deleteForm(formUuid) {
     await unpublishForm(formUuid);
     await deleteFormSubmissions(formUuid);
     await removeFormFromList(formUuid);
-    await write_1.putFile(getFormPath(formUuid), {});
+    await blockstack_1.putFile(getFormPath(formUuid), {});
 }
 exports.deleteForm = deleteForm;
 async function getForms() {
@@ -118,9 +118,9 @@ async function getForms() {
 }
 exports.getForms = getForms;
 async function getFormsFile() {
-    return await write_1.getFile(formsListFile);
+    return await blockstack_1.getFile(formsListFile);
 }
 async function initForms() {
-    return await write_1.putFile(formsListFile, []);
+    return await blockstack_1.putFile(formsListFile, []);
 }
 //# sourceMappingURL=index.js.map
